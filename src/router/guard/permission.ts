@@ -17,23 +17,24 @@ export const createPermission = (router: Router) => {
         }
 
         // 没有token
-        if (!unref(token)) {
-            if (!to?.meta?.permission && getRoute.length > 0) {
-                next();
-                return;
-            }
-            const redirectData: { path: string; replace: boolean; query?: any } = {
-                path: "/login",
-                replace: true
-            };
-            if (to.path) {
-                redirectData.query = {
-                    redirect: to.path
-                };
-            }
-            next(redirectData);
-            return;
-        }
+        // if (!unref(token)) {
+
+        //     if (!to?.meta?.permission && getRoute.length > 0) {
+        //         next();
+        //         return;
+        //     }
+        //     const redirectData: { path: string; replace: boolean; query?: any } = {
+        //         path: "/login",
+        //         replace: true
+        //     };
+        //     if (to.path) {
+        //         redirectData.query = {
+        //             redirect: to.path
+        //         };
+        //     }
+        //     next(redirectData);
+        //     return;
+        // }
 
         // 是否已经挂载过路由
         if (getRoute.length > 0) {

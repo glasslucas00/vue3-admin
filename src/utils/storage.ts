@@ -32,3 +32,10 @@ class VStorage implements ProxyStorage {
 export const local = new VStorage(localStorage);
 
 export const session = new VStorage(sessionStorage);
+
+export const loadStationStore = (key: string) => {
+    const v: any = localStorage.getItem("station");
+    const searform = JSON.parse(v);
+    console.log(searform[key]);
+    return searform[key];
+};

@@ -28,9 +28,9 @@ export const useAppStore = defineStore({
         menuConfig: {
             mode: "vertical",
             collapse: false,
-            sideWidth: 240,
-            sideCollapsed: 64,
-            systemTitle: "Vue3 Basic admin"
+            sideWidth: 350,
+            sideCollapsed: 60,
+            systemTitle: "杭州10号线弓网监测地面软件"
         },
         headerConfig: {
             pageSize: "default"

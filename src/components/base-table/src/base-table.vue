@@ -1,6 +1,6 @@
 <template>
     <div class="base-table">
-        <el-table row-key="id" v-bind="getPropsValue" v-loading="loading" header-cell-class-name="base-table-header-cell">
+        <el-table row-key="id" v-bind="getPropsValue" v-loading="loading" header-cell-class-name="base-table-header-cell" lazy max-height="600">
             <el-table-column fixed="left" type="expand" v-if="expandShow">
                 <template #default="scope">
                     <slot name="expand" :scope="scope"></slot>
@@ -31,6 +31,9 @@
                     <template #default="scope">
                         <template v-if="item.formType === FormTypeEnum.SLOT">
                             <slot name="tableColumn" :scope="scope" :column="item"></slot>
+                        </template>
+                        <template v-if="item.formType === FormTypeEnum.SLOT">
+                            <slot name="tableColumn2" :scope="scope" :column="item"></slot>
                         </template>
                         <template v-else-if="item.formType === FormTypeEnum.TAG">
                             <el-tag
@@ -101,7 +104,10 @@ const getPropsValue = computed(() => {
 const getPaginationValue = computed(() => {
     const newProps = props.pagination;
     if (!newProps.total) {
-        newProps.total = props.data?.length || 0;
+        newProps.total = props.length || 0;
+    }
+    if (!newProps.pageSize) {
+        newProps.pageSize = 50;
     }
     return { ...newProps };
 });

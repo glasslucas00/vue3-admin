@@ -14,9 +14,10 @@
                 <div class="base-filter-action">
                     <base-button type="primary" @click="handleSearch">查询</base-button>
                     <base-button type="primary" plain @click="handleReset">重置</base-button>
-                    <base-button type="primary" link @click="handleToggle" class="open-action" v-if="showOpen"
+                    <base-button type="primary" @click="downloadExcel">下载</base-button>
+                    <!-- <base-button type="primary" link @click="handleToggle" class="open-action" v-if="showOpen"
                         >{{ state.isOpen ? "收起" : "展开" }}<base-icon :icon="state.isOpen ? 'arrowUp' : 'arrowDown'" class="ml5"
-                    /></base-button>
+                    /></base-button> -->
                 </div>
             </template>
             <template v-for="item in filterColumnList" #[item.fieldName]>
@@ -33,11 +34,11 @@ import { isUndefined } from "@/utils";
 
 const props = defineProps(baseFilterProps);
 
-const emit = defineEmits(["search"]);
+const emit = defineEmits(["search", "excel"]);
 
 const state = reactive({
     baseFilterForm: props.searchInfo as any,
-    isOpen: false
+    isOpen: true
 });
 
 const baseFilterRef = ref();
@@ -47,13 +48,16 @@ const filterColumnList = computed((): FormColumnType[] => {
 });
 
 const handleSearch = () => {
+    console.log(state.baseFilterForm);
     if (state.baseFilterForm.time && state.baseFilterForm.time.length > 0) {
         state.baseFilterForm.startTime = state.baseFilterForm.time[0];
         state.baseFilterForm.endTime = state.baseFilterForm.time[1];
     }
     emit("search", state.baseFilterForm);
 };
-
+const downloadExcel = () => {
+    emit("excel");
+};
 const handleReset = () => {
     unref(filterColumnList).forEach((item) => {
         if (item?.config?.clearable === false) return;

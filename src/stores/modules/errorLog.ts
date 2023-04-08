@@ -33,7 +33,7 @@ export const useErrorLog = defineStore({
             };
             // fix:重复无限请求
             if (errorInfo.url === Api.ADD_ERROR_INFO) return;
-            await addErrorInfo(errorInfo);
+            // await addErrorInfo(errorInfo);
             this.errorLogList.push({ ...errorInfo });
         }
     }

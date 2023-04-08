@@ -50,7 +50,7 @@ service.interceptors.request.use((config: AxiosRequestConfig) => {
         config!.headers!.Authorization = unref(`Bearer ${getToken}`) ?? "";
     }
     if (loading) {
-        axiosLoading.addLoading();
+        // axiosLoading.addLoading();
     }
 
     return config;
@@ -59,6 +59,8 @@ service.interceptors.request.use((config: AxiosRequestConfig) => {
 service.interceptors.response.use(
     (response: AxiosResponse) => {
         const data = response.data;
+        // console.log('a',data);
+
         axiosCancel.removePending(response.config);
         if (data.code === ResultEnum.SUCCESS) {
             addAjaxLog(response);

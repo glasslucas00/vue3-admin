@@ -1,7 +1,12 @@
 <template>
     <router-link to="/" class="flex-center side-logo">
-        <base-icon svg-name="logo" :size="30" color="#fff" />
-        <div class="side-logo-title text-hidden flex-auto">{{ title }}</div>
+        <base-icon svg-name="metro" :size="200" color="#fff" />
+
+        <!-- <div class="app-logo">
+            
+        </div> -->
+
+        <!-- <div class="side-logo-title text-hidden flex-auto">{{ title }}</div> -->
     </router-link>
 </template>
 

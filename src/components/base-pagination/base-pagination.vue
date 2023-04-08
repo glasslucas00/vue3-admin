@@ -1,5 +1,5 @@
 <template>
-    <el-pagination v-bind="getPropsValue" @size-change="handleSizeChange" @current-change="handleCurrentChange" />
+    <el-pagination v-bind="getPropsValue" @size-change="handleSizeChange" @current-change="handleCurrentChange" :page-sizes="[50, 100, 200, 300]" />
 </template>
 
 <script lang="ts" setup>

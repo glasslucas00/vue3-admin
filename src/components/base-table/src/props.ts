@@ -7,6 +7,7 @@ export const defaultProps = {
         required: true,
         default: () => []
     },
+
     height: [String, Number],
     maxHeight: [String, Number],
     stripe: {
@@ -69,6 +70,7 @@ export const defaultProps = {
 };
 
 export const extraProps = {
+    length: { type: Number },
     loading: {
         type: Boolean,
         default: false

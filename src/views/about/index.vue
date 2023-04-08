@@ -1,13 +1,12 @@
 <template>
     <div class="page-about-index">
-        <base-box title="项目描述">
+        <!-- <base-box title="项目描述">
             <div class="description">
-                Vue3 Basic Admin
-                使用Vue3+Element-Plus+Vite3+TypeScript+Pinia搭建的后台管理系统，内置了许多开箱即用的组件，持续更新中，欢迎的你的使用和提出意见。
+                
             </div>
-        </base-box>
+        </base-box> -->
 
-        <base-box title="项目信息">
+        <base-box title="杭州10号线弓网监测地面软件">
             <el-descriptions :column="3" border>
                 <el-descriptions-item label="系统名称">{{ pkg.name }}</el-descriptions-item>
                 <el-descriptions-item label="版本"
@@ -16,7 +15,7 @@
                 <el-descriptions-item label="最后打包时间"
                     ><el-tag>{{ lastBuildTime }}</el-tag></el-descriptions-item
                 >
-                <el-descriptions-item label="预览地址">
+                <!-- <el-descriptions-item label="预览地址">
                     <a href="https://gist006.gitee.io/vue3-basic-admin" target="_blank" class="color-primary">预览地址</a>
                 </el-descriptions-item>
                 <el-descriptions-item label="github地址">
@@ -24,7 +23,7 @@
                 </el-descriptions-item>
                 <el-descriptions-item label="gitee地址">
                     <a href="https://gitee.com/gist006/vue3-basic-admin" target="_blank" class="color-primary">查看地址</a>
-                </el-descriptions-item>
+                </el-descriptions-item> -->
             </el-descriptions>
         </base-box>
 

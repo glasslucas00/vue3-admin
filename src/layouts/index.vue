@@ -11,7 +11,7 @@
                     <RouterView>
                         <template #default="{ Component, route }">
                             <transition name="el-fade-in-linear" mode="out-in">
-                                <keep-alive :include="getCacheTagList">
+                                <keep-alive :include="getCacheTagList" :max="10">
                                     <component :is="Component" :key="route.fullPath" />
                                 </keep-alive>
                             </transition>

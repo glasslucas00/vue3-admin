@@ -8,6 +8,7 @@ $menuItemHeight: 48px;
         &.collapse {
             .side-logo {
                 padding-left: 0;
+
             }
             .side-logo-title {
                 display: none;
@@ -20,8 +21,8 @@ $menuItemHeight: 48px;
             }
         }
         .side-logo {
-            height: 54px;
-            line-height: 54px;
+            height: 100px;
+            line-height: 100px;
             transition: all 0.2s ease;
             box-sizing: border-box;
             padding-left: 24px;

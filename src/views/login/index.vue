@@ -90,7 +90,7 @@ const handleLogin = async () => {
         if (!valid) return;
         try {
             loading.value = true;
-            await userStore.login(loginForm);
+            // await userStore.login(loginForm);
             setTimeout(() => {
                 router.push({
                     path: "/"

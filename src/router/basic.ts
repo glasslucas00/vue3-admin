@@ -10,7 +10,7 @@ const LoginRoute: AppRouteType = {
 const RootRoute: AppRouteType = {
     path: "/",
     name: "Root",
-    redirect: "/dashboard"
+    redirect: "/meas/table"
 };
 
 const RedirectRoute: AppRouteType = {

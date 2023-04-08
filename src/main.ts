@@ -6,7 +6,6 @@ import { setupIcon, setupGlobalUtils, setupErrorHandler } from "@/plugins";
 import { setupLoadingDirective, setupPermissionDirective } from "./directive";
 import router from "./router/index";
 import { setupRouterGuard } from "@/router/guard";
-
 import "./styles/index.scss";
 
 const app = createApp(App);
@@ -33,5 +32,7 @@ setupPlugins();
 setupDirective();
 // 注册路由守卫
 setupRouterGuard(router);
+
+// app.use(router).mount("#app");
 
 app.use(router).mount("#app");

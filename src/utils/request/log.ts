@@ -59,12 +59,12 @@ export const addAjaxLog = (response: any) => {
     if ([Api.ADD_OPERATION_INFO, Api.ADD_ERROR_INFO, Api.ADD_LOGIN_INFO].includes(url) || method === "get") return;
     requestOptions.successMessage && success(response?.data?.message);
 
-    addOperationInfo({
-        method,
-        url,
-        user: "admin",
-        userIp: "127.0.0.1",
-        status: response.data.code,
-        time: dayjs().format("YYYY-MM-DD HH:mm:ss")
-    });
+    // addOperationInfo({
+    //     method,
+    //     url,
+    //     user: "admin",
+    //     userIp: "127.0.0.1",
+    //     status: response.data.code,
+    //     time: dayjs().format("YYYY-MM-DD HH:mm:ss")
+    // });
 };

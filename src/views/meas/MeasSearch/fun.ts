@@ -54,6 +54,7 @@ export const processItems = (items: any[]) => {
         x.timestamp = parseTime(x.timestamp);
         x.id_station_next = useStationStoreWithOut().StationList[x.id_station_next - 1].label;
         x.direction = x.direction > 0 ? "上行" : x.direction < 0 ? "下行" : "未知";
+
         return x;
     });
     return items;

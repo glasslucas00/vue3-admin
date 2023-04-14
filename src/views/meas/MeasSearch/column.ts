@@ -167,8 +167,8 @@ export const TableColumn: Column<any>[] = [
         width: columnsWidth
     },
     {
-        key: "stagger_distance",
-        dataKey: "stagger_distance",
+        key: "stagger_other",
+        dataKey: "stagger_other",
         title: "双线距离(mm)",
         width: columnsWidth
     }

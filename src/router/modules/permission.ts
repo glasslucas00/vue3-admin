@@ -9,8 +9,8 @@ const permission: AppRouteType[] = [
         meta: {
             title: "权限控制",
             icon: "svg-permission",
-            sort: 2,
-            permission: "admin_permission"
+            sort: 2
+            // permission: "admin_permission"
         },
         children: [
             {
@@ -20,7 +20,7 @@ const permission: AppRouteType[] = [
                 meta: {
                     title: "页面权限",
                     sort: 1,
-                    permission: "admin_permission_page",
+                    // permission: "admin_permission_page",
                     icon: ""
                 }
             },
@@ -31,7 +31,7 @@ const permission: AppRouteType[] = [
                 meta: {
                     title: "按钮权限",
                     sort: 2,
-                    permission: "admin_permission_button",
+                    // permission: "admin_permission_button",
                     icon: ""
                 }
             }

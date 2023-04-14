@@ -8,7 +8,7 @@
             </base-filter>
         </base-box>
 
-        <base-box title="数据查询">
+        <base-box title="数据查询" v-custom-loading="loading" loading-text="数据加载中" loading-spin="plane" :loading-full="false">
             <div style="height: 800px">
                 <el-auto-resizer>
                     <template #default="{ height, width }">
@@ -27,7 +27,7 @@ import type { Column } from "element-plus";
 import { parseTime, exportXlsx, processItems } from "./fun";
 import { useStationStoreWithOut } from "@/stores/modules/station";
 import { loadStationStore } from "@/utils/storage";
-
+const loading = ref(false);
 // console.log(MetroStore.StationList);
 const Data: any = ref([]);
 const MetroStore = useStationStoreWithOut();
@@ -42,6 +42,7 @@ const search = (searchForm: any): void => {
     console.log("查询条件：", searchForm);
     MetroStore.setMeasSearchForm(searchForm);
     const data = searchMeasTable(searchForm);
+
     data.then((value) => {
         Data.value = processItems(value.data.items);
         console.log(Data.value);
@@ -51,6 +52,13 @@ const search = (searchForm: any): void => {
         // console.log('select metro:',MetroStore.MetroName);
         // console.log(options);
     });
+};
+
+const startCustomLoading = () => {
+    loading.value = true;
+    setTimeout(() => {
+        loading.value = false;
+    }, 2000);
 };
 const exportExcel = (): void => {
     console.log("导出EXCEl中...");

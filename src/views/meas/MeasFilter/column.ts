@@ -207,12 +207,12 @@ export const TableColumn: Column<any>[] = [
         title: "定位点编号",
         width: columnsWidth
     },
-    {
-        key: "anchor_distance_m",
-        dataKey: "anchor_distance_m",
-        title: "最近定位点距离(m)",
-        width: columnsWidth
-    },
+    // {
+    //     key: "anchor_distance_m",
+    //     dataKey: "anchor_distance_m",
+    //     title: "最近定位点距离(m)",
+    //     width: columnsWidth
+    // },
     {
         key: "velocity_km_per_h",
         dataKey: "velocity_km_per_h",
@@ -256,8 +256,8 @@ export const TableColumn: Column<any>[] = [
         width: columnsWidth
     },
     {
-        key: "stagger_distance",
-        dataKey: "stagger_distance",
+        key: "stagger_other",
+        dataKey: "stagger_other",
         title: "双线距离(mm)",
         width: columnsWidth
     }

@@ -17,7 +17,7 @@
 
 <script lang="ts" setup>
 import { searchMeasChart } from "@/api/info";
-import { processChartsData, processTrueData, chartsSeries } from "./fun";
+import { processChartsData, setChartsSeries } from "./fun";
 // import {LineOptions} from "./column"
 import * as echarts from "echarts";
 // vue3 引入对应功能
@@ -30,7 +30,9 @@ const full = ref(false);
 const colors = ["#7cb5ec", "#434348", "#90ed7d", "#f7a35c", "#8085e9", "#f15c80", "#e4d354", "#8085e8", "#8d4653", "#91e8e1"];
 const LineOptions = {
     grid: {
-        width: "auto"
+        // width: "auto"
+        left: 200,
+        right: 220
     },
     tooltip: {
         trigger: "axis",
@@ -52,9 +54,7 @@ const LineOptions = {
     },
     toolbox: {
         feature: {
-            dataZoom: {
-                yAxisIndex: "none"
-            },
+            dataZoom: {},
             // restore: {},
             // saveAsImage: {},
             dataView: { show: true, readOnly: false },
@@ -65,6 +65,7 @@ const LineOptions = {
     xAxis: {
         type: "value",
         boundaryGap: false,
+        splitLine: { show: false },
         name: "距离",
         nameLocation: "center",
         min: "dataMin",
@@ -77,6 +78,7 @@ const LineOptions = {
             position: "left",
             min: 0,
             max: 14,
+            splitLine: { show: false },
             // alignTicks: true,
             offset: 5,
             axisLine: {
@@ -98,6 +100,7 @@ const LineOptions = {
             max: 60,
             // alignTicks: true,
             offset: 70,
+            splitLine: { show: false },
             axisLine: {
                 show: true,
                 lineStyle: {
@@ -114,6 +117,7 @@ const LineOptions = {
             position: "left",
             min: -300,
             max: 500,
+            splitLine: { show: false },
             // alignTicks: true,
             offset: 120,
             axisLine: {
@@ -132,6 +136,7 @@ const LineOptions = {
             name: "导高",
             min: 3500,
             max: 4250,
+            splitLine: { show: false },
             position: "right",
             alignTicks: true,
             offset: 30,
@@ -153,6 +158,7 @@ const LineOptions = {
             offset: 100,
             min: 0,
             max: 15,
+            splitLine: { show: false },
             axisLine: {
                 show: true,
                 lineStyle: {
@@ -170,7 +176,8 @@ const LineOptions = {
             alignTicks: true,
             offset: 150,
             min: 50,
-            max: 2000,
+            max: 1500,
+            splitLine: { show: false },
             axisLine: {
                 show: true,
                 lineStyle: {
@@ -231,17 +238,13 @@ const getChartsData = async () => {
 
         const items = value.data.items;
         const truedata = value.data.trueData;
-        const staggerdata = value.data.total;
-        // console.log(value);
-        const chartsDatas: any = [];
-        for (let i = 0; i < 9; i++) {
-            chartsDatas[i] = [];
-        }
-        chartsDatas[2] = staggerdata;
-        processChartsData(items, chartsDatas);
-        processTrueData(truedata, chartsDatas);
+        const chartDatas = value.data.chartDatas;
+        // console.log(value.data.chartDatas);
 
-        const dataSeries = chartsSeries(chartsDatas);
+        const chartsSeries = processChartsData(chartDatas);
+        // processTrueData(truedata, chartsDatas);
+
+        const dataSeries = setChartsSeries(chartsSeries);
         LineOptions.series = dataSeries;
         console.log(LineOptions.series);
         chart();

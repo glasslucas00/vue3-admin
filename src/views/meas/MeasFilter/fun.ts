@@ -19,7 +19,7 @@ export const exportXlsx = (tableData: any) => {
         stagger: "拉出值(mm)",
         temperature_max: "温度",
         abrasion_other: "导线残高(mm)",
-        voltage: "双线距离(mm)"
+        stagger_other: "双线距离(mm)"
     };
 
     const list = tableData.map((item: any) => {

@@ -4,136 +4,27 @@ import { LineOptions } from "./column";
 
 const colors = ["#7cb5ec", "#434348", "#90ed7d", "#f7a35c", "#8085e9", "#f15c80", "#e4d354", "#8085e8", "#8d4653", "#91e8e1"];
 
-export const processChartsData = (items: any, chartsDatas: any) => {
-    let tempdata = [];
-    // let tempstagger = [];
-    // for (let i = 0; i < 9; i++) {
-    //     chartsDatas[i] = [];
-    // }
-    for (let i = 0; i < items.length; i++) {
-        const x = items[i];
-        // console.log(x.distance_from_last_station_m,x.stagger,x.stagger_other);
-        chartsDatas[0].push([x.distance_from_last_station_m, x.abrasion]);
-        chartsDatas[1].push([x.distance_from_last_station_m, x.temperature_max]);
-
-        chartsDatas[4].push([x.distance_from_last_station_m, x.abrasion_other]);
-        chartsDatas[5].push([x.distance_from_last_station_m, x.stagger_other]);
-
-        // data 3
-        if (x.height_other) {
-            // console.log('x.height_other',x.height_other);
-            tempdata.push([x.distance_from_last_station_m, x.height]);
-            chartsDatas[3].push([x.distance_from_last_station_m, x.height_other]);
-        } else {
-            if (tempdata.length > 0 && tempdata.length < 10) {
-                tempdata.unshift([x.distance_from_last_station_m - 0.1, null]);
-                // tempdata[0]=[tempdata[0][0], null)
-                tempdata.push([x.distance_from_last_station_m, x.height]);
-
-                tempdata.map((y) => {
-                    chartsDatas[3].push(y);
-                    return 0;
-                });
-
-                tempdata = [];
-            } else {
-                // let  a= [x.distance_from_last_station_m, x.height);
-                chartsDatas[3].push([x.distance_from_last_station_m, x.height]);
-            }
-        }
-        // data 2
-        // if (x.stagger_other) {
-        //     // console.log('x.stagger_other',x.stagger_other);
-        //     // console.log('cc',);
-        //     const endstagger = chartsDatas[2].slice(-1)[0][1];
-        //     if (endstagger * x.stagger_other > 0) {
-        //         tempstagger.push([x.distance_from_last_station_m, x.stagger]);
-        //         chartsDatas[2].push([x.distance_from_last_station_m, x.stagger_other]);
-        //     } else {
-        //         tempstagger.push([x.distance_from_last_station_m, x.stagger_other]);
-        //         chartsDatas[2].push([x.distance_from_last_station_m, x.stagger]);
-        //     }
-
-        //     // console.log('dd',chartsDatas[2]);
-        // } else {
-        //     if (tempstagger.length > 0 && tempstagger.length < 10) {
-        //         tempstagger.unshift([x.distance_from_last_station_m - 0.1, null]);
-        //         // if (4-tempstagger.length==2){
-        //         //   tempstagger.push([x.distance_from_last_station_m-2.5, x.stagger+2])
-        //         //   tempstagger.push([x.distance_from_last_station_m-1, x.stagger-3])
-        //         // }
-        //         // if (4-tempstagger.length==1){
-        //         //   tempstagger.push([x.distance_from_last_station_m-2.5, x.stagger+2])
-        //         // }
-        //         tempstagger.push([x.distance_from_last_station_m, x.stagger]);
-
-        //         tempstagger.map((y) => {
-        //             chartsDatas[2].push(y);
-        //             return 0;
-        //         });
-
-        //         tempstagger = [];
-        //     } else {
-        //         // let  a= [x.distance_from_last_station_m, x.height);
-        //         chartsDatas[2].push([x.distance_from_last_station_m, x.stagger]);
-        //     }
-        // }
+export const processChartsData = (chartsData: any) => {
+    const chartsDatas = [];
+    for (let i = 0; i < 9; i++) {
+        chartsDatas[i] = [];
     }
-    return chartsDatas;
-};
-
-export const processTrueData = (truedata: any, chartsDatas: any) => {
-    let temptruedata = [];
-    const newtruedata = [];
-    for (let i = 1; i < truedata.length - 1; ) {
-        // let x_before=truedata[i-1].stagger
-        const xi = truedata[i].stagger;
-        const xafter = truedata[i + 1].stagger;
-        // let diff_before=Math.abs(x_before-xi)
-        const diffafter = Math.abs(xafter - xi);
-        // 190--175
-        if (diffafter > 160) {
-            newtruedata.push(truedata[i]);
-            temptruedata.push(truedata[i + 1]);
-            i = i + 2;
-        } else {
-            if (temptruedata.length > 0) {
-                const end = newtruedata.slice(-1)[0];
-                const end2 = JSON.parse(JSON.stringify(end));
-                Object.assign(end2, end);
-                // console.log('end1',end);
-                end2.stagger = null;
-                end2.distance_from_last_station_m = end.distance_from_last_station_m + 8;
-                // console.log('end2',end2);
-
-                newtruedata.push(end2);
-
-                for (let p = 0; p < temptruedata.length; p++) {
-                    newtruedata.push(temptruedata[p]);
-                }
-                temptruedata = [];
-            }
-            newtruedata.push(truedata[i]);
-            i++;
-        }
-    }
-    // 真导高
-    chartsDatas[6] = newtruedata.map((x) => {
-        return [x.distance_from_last_station_m, x.height];
-    });
-    // 真拉出值
-    chartsDatas[7] = newtruedata.map((x) => {
-        return [x.distance_from_last_station_m, x.stagger];
-    });
-    // 竖线
-    chartsDatas[8] = newtruedata.map((x) => {
+    chartsDatas[0] = chartsData.abrasion;
+    chartsDatas[1] = chartsData.temp;
+    chartsDatas[2] = chartsData.stagger;
+    chartsDatas[3] = chartsData.height;
+    chartsDatas[4] = chartsData.abrasion_other;
+    chartsDatas[5] = chartsData.stagger_other;
+    chartsDatas[6] = chartsData.anchorHeight;
+    chartsDatas[7] = chartsData.anchorStagger;
+    chartsDatas[8] = chartsData.anchorName.map((x: any) => {
         return {
-            xAxis: x.distance_from_last_station_m, // 对于x轴中的一个值,
+            xAxis: x[0], // 对于x轴中的一个值,
             label: {
                 show: true, // 是否展示文字
                 color: "#b1b3b8",
                 fontSize: 12,
-                formatter: x.name
+                formatter: x[1]
             },
             lineStyle: {
                 color: "#b1b3b8",
@@ -142,11 +33,10 @@ export const processTrueData = (truedata: any, chartsDatas: any) => {
             }
         };
     });
-    // return newtruedata;
     return chartsDatas;
 };
 
-export const chartsSeries = (chartsDatas: any) => {
+export const setChartsSeries = (chartsDatas: any) => {
     const dataSeries = [] as any;
     dataSeries[0] = {
         name: "磨耗",

@@ -113,7 +113,8 @@ const TableColumn: any[] = [
                 callFunction: (e: any) => {
                     tableData.value.splice(e.$index, 1);
                     deleteAbnormXG({ file_img: e.row.file_img });
-                    datatotal.value = datatotal.value - 1;
+                    pagination.value.total = pagination.value.total - 1;
+                    console.log(pagination.value.total);
                 }
             }
         ]
@@ -169,7 +170,9 @@ const openVideo = (index: any, row: any) => {
     videosrc.value = row.file_video;
     unref(baseDialogRef).showDialog();
 };
-
+const deleteItem = () => {
+    datatotal.value = datatotal.value - 1;
+};
 const paginationChange = () => {
     console.log(pagination.value);
     pageIndex.value = pagination.value?.currentPage ?? 1;
@@ -189,7 +192,7 @@ const exportExcel = (): void => {
 
     // console.log(MetroStore.MetroName);
 };
-const options = reactive({});
+const options = reactive(loadStationStore("AbnormSearchForm"));
 </script>
 <style lang="scss" scoped>
 // .player-container {

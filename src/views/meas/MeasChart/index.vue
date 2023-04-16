@@ -1,14 +1,17 @@
 <template>
     <div class="com-echarts-line-container hidden">
-        <el-button @click="load">加载</el-button>
-
-        <base-box title="分布图" class="dark-bg">
-            <el-row :gutter="24">
-                <el-col :span="24">
-                    <div class="chartSection" ref="chart1"></div>
-                </el-col>
-            </el-row>
-        </base-box>
+        <el-collapse v-model="activeNames" @change="handleChange">
+            <el-collapse-item title="点击加载图表" name="1">
+                <!-- <el-button @click="load">加载</el-button> -->
+                <base-box v-custom-loading="loading" :loading-full="full" title="" class="dark-bg">
+                    <el-row :gutter="24">
+                        <el-col :span="24">
+                            <div class="chartSection" ref="chart1"></div>
+                        </el-col>
+                    </el-row>
+                </base-box>
+            </el-collapse-item>
+        </el-collapse>
     </div>
 </template>
 
@@ -20,6 +23,10 @@ import * as echarts from "echarts";
 // vue3 引入对应功能
 import { ref, reactive } from "vue";
 import { loadStationStore } from "@/utils/storage";
+import { useLoading } from "@/hooks";
+
+const loading = ref(false);
+const full = ref(false);
 const colors = ["#7cb5ec", "#434348", "#90ed7d", "#f7a35c", "#8085e9", "#f15c80", "#e4d354", "#8085e8", "#8d4653", "#91e8e1"];
 const LineOptions = {
     grid: {
@@ -59,7 +66,9 @@ const LineOptions = {
         type: "value",
         boundaryGap: false,
         name: "距离",
-        nameLocation: "center"
+        nameLocation: "center",
+        min: "dataMin",
+        max: "dataMax"
     },
     yAxis: [
         {
@@ -222,11 +231,13 @@ const getChartsData = async () => {
 
         const items = value.data.items;
         const truedata = value.data.trueData;
+        const staggerdata = value.data.total;
         // console.log(value);
         const chartsDatas: any = [];
         for (let i = 0; i < 9; i++) {
             chartsDatas[i] = [];
         }
+        chartsDatas[2] = staggerdata;
         processChartsData(items, chartsDatas);
         processTrueData(truedata, chartsDatas);
 
@@ -234,6 +245,7 @@ const getChartsData = async () => {
         LineOptions.series = dataSeries;
         console.log(LineOptions.series);
         chart();
+        loading.value = false;
 
         // console.log(value.data);
         // MetroStore.MetroName=selectvalue.value;
@@ -256,8 +268,21 @@ const chart = () => {
     });
 };
 
+const activeNames = ref(["0"]);
+const handleChange = (val: string[]) => {
+    console.log(val);
+    loading.value = true;
+    load();
+};
 const load = async () => {
     await getChartsData();
+};
+const startCustomLoading = (val: number) => {
+    full.value = val === 2;
+    loading.value = true;
+    setTimeout(() => {
+        loading.value = false;
+    }, 2000);
 };
 onMounted(() => {
     chart();

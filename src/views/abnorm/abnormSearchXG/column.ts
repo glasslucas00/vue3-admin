@@ -112,7 +112,7 @@ export const DirectionData: BasicType[] = [
     },
     {
         label: "下行",
-        value: 0
+        value: -1
     }
 ];
 export const WarmTypes: BasicType[] = [
@@ -196,15 +196,15 @@ export const FormColumn: FormColumnType[] = [
             multiple: true
         }
     },
-    {
-        fieldName: "level",
-        fieldDesc: "告警等级",
-        fieldType: FormTypeEnum.SELECT,
-        config: {
-            options: WarmLevel,
-            multiple: true
-        }
-    },
+    // {
+    //     fieldName: "level",
+    //     fieldDesc: "告警等级",
+    //     fieldType: FormTypeEnum.SELECT,
+    //     config: {
+    //         options: WarmLevel,
+    //         multiple: true
+    //     }
+    // },
     {
         fieldName: "distance",
         fieldDesc: "距离",

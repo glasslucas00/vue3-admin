@@ -117,7 +117,7 @@ const exportExcel = (): void => {
 
     // console.log(MetroStore.MetroName);
 };
-const options = reactive({});
+const options = reactive(loadStationStore("AbnormSearchForm"));
 </script>
 <style lang="scss" scoped>
 // .player-container {

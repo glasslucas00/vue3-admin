@@ -112,7 +112,7 @@ export const DirectionData: BasicType[] = [
     },
     {
         label: "下行",
-        value: 0
+        value: -1
     }
 ];
 export const WarmTypes: BasicType[] = [

@@ -49,7 +49,7 @@ export const BarOptions: any = ref({
     ],
     series: [
         {
-            name: "LOL",
+            name: "导高异常",
             type: "bar",
             stack: "PC",
             data: [1500, 2800, 3500, 2900],
@@ -60,7 +60,7 @@ export const BarOptions: any = ref({
             }
         },
         {
-            name: "DNF",
+            name: "拉出值异常",
             type: "bar",
             stack: "PC",
             data: [700, 600, 550, 420],
@@ -71,7 +71,7 @@ export const BarOptions: any = ref({
             }
         },
         {
-            name: "王者荣耀",
+            name: "磨耗异常",
             type: "bar",
             stack: "mobile",
             data: [1600, 2300, 2800, 3300],
@@ -82,7 +82,7 @@ export const BarOptions: any = ref({
             }
         },
         {
-            name: "和平精英",
+            name: "燃弧异常",
             type: "bar",
             stack: "mobile",
             data: [1600, 2800, 3500, 2000],
@@ -192,7 +192,7 @@ export const DirectionData: BasicType[] = [
     },
     {
         label: "下行",
-        value: 0
+        value: -1
     }
 ];
 export const WarmTypes: BasicType[] = [

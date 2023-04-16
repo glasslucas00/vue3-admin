@@ -6,29 +6,20 @@ const colors = ["#7cb5ec", "#434348", "#90ed7d", "#f7a35c", "#8085e9", "#f15c80"
 
 export const processChartsData = (items: any, chartsDatas: any) => {
     let tempdata = [];
-    let tempstagger = [];
+    // let tempstagger = [];
     // for (let i = 0; i < 9; i++) {
     //     chartsDatas[i] = [];
     // }
-
     for (let i = 0; i < items.length; i++) {
         const x = items[i];
         // console.log(x.distance_from_last_station_m,x.stagger,x.stagger_other);
         chartsDatas[0].push([x.distance_from_last_station_m, x.abrasion]);
         chartsDatas[1].push([x.distance_from_last_station_m, x.temperature_max]);
-        const wireRadius = 5;
-        if (x.abrasion >= 2 * wireRadius) {
-            chartsDatas[4].push([x.distance_from_last_station_m, wireRadius]);
-        } else {
-            chartsDatas[4].push([x.distance_from_last_station_m, parseFloat(x.abrasion_other.toFixed(3))]);
-        }
-        if (x.stagger_other) {
-            chartsDatas[5].push([x.distance_from_last_station_m, parseFloat(Math.abs(x.stagger - x.stagger_other).toFixed(3))]);
-        } else {
-            chartsDatas[5].push([x.distance_from_last_station_m, null]);
-        }
-        // console.log(x);
 
+        chartsDatas[4].push([x.distance_from_last_station_m, x.abrasion_other]);
+        chartsDatas[5].push([x.distance_from_last_station_m, x.stagger_other]);
+
+        // data 3
         if (x.height_other) {
             // console.log('x.height_other',x.height_other);
             tempdata.push([x.distance_from_last_station_m, x.height]);
@@ -50,44 +41,43 @@ export const processChartsData = (items: any, chartsDatas: any) => {
                 chartsDatas[3].push([x.distance_from_last_station_m, x.height]);
             }
         }
+        // data 2
+        // if (x.stagger_other) {
+        //     // console.log('x.stagger_other',x.stagger_other);
+        //     // console.log('cc',);
+        //     const endstagger = chartsDatas[2].slice(-1)[0][1];
+        //     if (endstagger * x.stagger_other > 0) {
+        //         tempstagger.push([x.distance_from_last_station_m, x.stagger]);
+        //         chartsDatas[2].push([x.distance_from_last_station_m, x.stagger_other]);
+        //     } else {
+        //         tempstagger.push([x.distance_from_last_station_m, x.stagger_other]);
+        //         chartsDatas[2].push([x.distance_from_last_station_m, x.stagger]);
+        //     }
 
-        if (x.stagger_other) {
-            // console.log('x.stagger_other',x.stagger_other);
-            // console.log('cc',);
-            const endstagger = chartsDatas[2].slice(-1)[0][1];
-            if (endstagger * x.stagger_other > 0) {
-                tempstagger.push([x.distance_from_last_station_m, x.stagger]);
-                chartsDatas[2].push([x.distance_from_last_station_m, x.stagger_other]);
-            } else {
-                tempstagger.push([x.distance_from_last_station_m, x.stagger_other]);
-                chartsDatas[2].push([x.distance_from_last_station_m, x.stagger]);
-            }
+        //     // console.log('dd',chartsDatas[2]);
+        // } else {
+        //     if (tempstagger.length > 0 && tempstagger.length < 10) {
+        //         tempstagger.unshift([x.distance_from_last_station_m - 0.1, null]);
+        //         // if (4-tempstagger.length==2){
+        //         //   tempstagger.push([x.distance_from_last_station_m-2.5, x.stagger+2])
+        //         //   tempstagger.push([x.distance_from_last_station_m-1, x.stagger-3])
+        //         // }
+        //         // if (4-tempstagger.length==1){
+        //         //   tempstagger.push([x.distance_from_last_station_m-2.5, x.stagger+2])
+        //         // }
+        //         tempstagger.push([x.distance_from_last_station_m, x.stagger]);
 
-            // console.log('dd',chartsDatas[2]);
-        } else {
-            if (tempstagger.length > 0 && tempstagger.length < 10) {
-                tempstagger.unshift([x.distance_from_last_station_m - 0.1, null]);
-                // if (4-tempstagger.length==2){
-                //   tempstagger.push([x.distance_from_last_station_m-2.5, x.stagger+2])
-                //   tempstagger.push([x.distance_from_last_station_m-1, x.stagger-3])
-                // }
-                // if (4-tempstagger.length==1){
-                //   tempstagger.push([x.distance_from_last_station_m-2.5, x.stagger+2])
-                // }
-                tempstagger.push([x.distance_from_last_station_m, x.stagger]);
+        //         tempstagger.map((y) => {
+        //             chartsDatas[2].push(y);
+        //             return 0;
+        //         });
 
-                tempstagger.map((y) => {
-                    chartsDatas[2].push(y);
-                    return 0;
-                });
-
-                tempstagger = [];
-            } else {
-                // let  a= [x.distance_from_last_station_m, x.height);
-                chartsDatas[2].push([x.distance_from_last_station_m, x.stagger]);
-            }
-        }
-        // console.log(dataSeries3);
+        //         tempstagger = [];
+        //     } else {
+        //         // let  a= [x.distance_from_last_station_m, x.height);
+        //         chartsDatas[2].push([x.distance_from_last_station_m, x.stagger]);
+        //     }
+        // }
     }
     return chartsDatas;
 };

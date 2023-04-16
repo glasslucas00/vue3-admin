@@ -8,7 +8,7 @@
             </base-filter>
         </base-box>
 
-        <base-box title="数据查询" v-custom-loading="loading" loading-text="数据加载中" loading-spin="plane" :loading-full="false">
+        <base-box title="数据查询" v-custom-loading="loading" loading-text="请稍等..." loading-spin="preloader" :loading-full="full">
             <div style="height: 800px">
                 <el-auto-resizer>
                     <template #default="{ height, width }">
@@ -28,23 +28,29 @@ import { parseTime, exportXlsx, processItems } from "./fun";
 import { useStationStoreWithOut } from "@/stores/modules/station";
 import { loadStationStore } from "@/utils/storage";
 const loading = ref(false);
+const full = ref(false);
 // console.log(MetroStore.StationList);
 const Data: any = ref([]);
 const MetroStore = useStationStoreWithOut();
 // const { StationList, MetroName,MeasSearchForm  } = storeToRefs(MetroStore);
+
 const search = (searchForm: any): void => {
     // console.log(MetroStore.MetroName);
 
     // const storeinfo:any = localStorage.getItem("station");
     // console.log(storeinfo);
+    Data.value = [];
+
     const MetroName = loadStationStore("MetroName");
     searchForm.metro_name = MetroName;
     console.log("查询条件：", searchForm);
     MetroStore.setMeasSearchForm(searchForm);
+    startCustomLoading(1);
     const data = searchMeasTable(searchForm);
 
     data.then((value) => {
         Data.value = processItems(value.data.items);
+        // Data.value.push(processItems(value.data.items));
         console.log(Data.value);
 
         // console.log(value.data);
@@ -54,7 +60,8 @@ const search = (searchForm: any): void => {
     });
 };
 
-const startCustomLoading = () => {
+const startCustomLoading = (val: number) => {
+    full.value = val === 2;
     loading.value = true;
     setTimeout(() => {
         loading.value = false;
@@ -69,7 +76,7 @@ const exportExcel = (): void => {
 
     // console.log(MetroStore.MetroName);
 };
-const options = reactive({});
-
+const options = reactive(loadStationStore("MeasSearchForm"));
+// const searchInfo =
 const columns = TableColumn;
 </script>

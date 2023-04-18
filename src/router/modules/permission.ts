@@ -9,8 +9,8 @@ const permission: AppRouteType[] = [
         meta: {
             title: "权限控制",
             icon: "svg-permission",
-            sort: 2
-            // permission: "admin_permission"
+            sort: 2,
+            permission: "admin_permission"
         },
         children: [
             {

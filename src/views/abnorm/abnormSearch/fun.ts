@@ -4,23 +4,23 @@ import { useStationStoreWithOut } from "@/stores/modules/station";
 import { abnormType, TableColumn } from "./table";
 import dayjs from "dayjs";
 
-export const exportXlsx = (tableData: any) => {
+export const exportXlsx = (tableData: any, csvInfo: any) => {
     // console.log("tableData", tableData);
     const head: any = {
         id: "序号",
         timestamp: "日期",
         direction: "方向",
         id_station_next: "下一站",
-        anchor_name: "定位点编号 ",
+        type: "异常类型",
         anchor_distance_m: "距离杆位置(m)",
         velocity_km_per_h: "车速(km/h) ",
         distance_from_last_station_m: " 距离上一站距离(m)",
-        abrasion: "磨耗(mm)",
-        height: "导高(mm) ",
-        stagger: "拉出值(mm)",
-        temperature_max: "温度",
-        abrasion_other: "导线残高(mm)",
-        voltage: "双线距离(mm)"
+        level: "告警等级",
+        anchor_name: "定位点编号 ",
+        distance: "定位点距离",
+        value: "数值",
+        file_img: "图片",
+        file_video: "视频"
     };
 
     const list = tableData.map((item: any) => {
@@ -47,7 +47,7 @@ export const exportXlsx = (tableData: any) => {
     // 将工作表放入工作簿中
     XLSX.utils.book_append_sheet(wb, data, "data");
     // 生成文件并下载
-    XLSX.writeFile(wb, time + "测量数据.xlsx");
+    XLSX.writeFile(wb, csvInfo + "_测量数据.xlsx");
 };
 
 export const processItems = (items: any[]) => {

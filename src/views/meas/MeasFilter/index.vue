@@ -40,18 +40,19 @@ const search = (searchForm: any): void => {
     // const storeinfo:any = localStorage.getItem("station");
     // console.log(storeinfo);
     Data.value = [];
-
+    loading.value = true;
     const MetroName = loadStationStore("MetroName");
     searchForm.metro_name = MetroName;
     console.log("查询条件：", searchForm);
     MetroStore.setMeasSearchForm(searchForm);
-    startCustomLoading(1);
+    // startCustomLoading(1);
     const data = searchMeasTable(searchForm);
 
     data.then((value) => {
         Data.value = processItems(value.data.items);
         // Data.value.push(processItems(value.data.items));
-        console.log(Data.value);
+        // console.log(Data.value);
+        loading.value = false;
 
         // console.log(value.data);
         // MetroStore.MetroName=selectvalue.value;
@@ -69,9 +70,10 @@ const startCustomLoading = (val: number) => {
 };
 const exportExcel = (): void => {
     console.log("导出EXCEl中...");
-
+    const MetroName = loadStationStore("MetroName");
+    const csvInfo = MetroName + "_" + options.timestamp;
     if (Data.value) {
-        exportXlsx(Data.value);
+        exportXlsx(Data.value, csvInfo);
     }
 
     // console.log(MetroStore.MetroName);

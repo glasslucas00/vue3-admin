@@ -31,7 +31,7 @@
                                     登 录
                                 </base-button>
                             </el-form-item>
-                            <div class="login-register mb15">还没有账号？立即<span class="register-title">注册</span></div>
+                            <!-- <div class="login-register mb15">还没有账号？立即<span class="register-title">注册</span></div>
                             <div class="login-divider">其他登录方式</div>
                             <div class="flex-row-center mt15 justify-around">
                                 <base-icon svg-name="github" :size="25" class="pointer"></base-icon>
@@ -39,7 +39,7 @@
                                 <base-icon svg-name="weixin" :size="25" class="pointer"></base-icon>
                                 <base-icon svg-name="qq" :size="25" class="pointer"></base-icon>
                                 <base-icon svg-name="zhifubao" :size="25" class="pointer"></base-icon>
-                            </div>
+                            </div> -->
                         </el-form>
                     </div>
                 </el-col>

@@ -236,8 +236,6 @@ const getChartsData = async () => {
     await searchMeasChart(searchForm).then((value: any) => {
         // Data.value =processItems(value.data.items) ;
 
-        const items = value.data.items;
-        const truedata = value.data.trueData;
         const chartDatas = value.data.chartDatas;
         // console.log(value.data.chartDatas);
 
@@ -273,19 +271,14 @@ const chart = () => {
 
 const activeNames = ref(["0"]);
 const handleChange = (val: string[]) => {
-    console.log(val);
-    loading.value = true;
-    load();
+    if (val.length > 1) {
+        console.log(val);
+        loading.value = true;
+        load();
+    }
 };
 const load = async () => {
     await getChartsData();
-};
-const startCustomLoading = (val: number) => {
-    full.value = val === 2;
-    loading.value = true;
-    setTimeout(() => {
-        loading.value = false;
-    }, 2000);
 };
 onMounted(() => {
     chart();

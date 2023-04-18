@@ -2,7 +2,7 @@ import * as XLSX from "xlsx"; // Vue3 版本
 // import { useTimeAgo, useNow, useDateFormat } from "@vueuse/core";
 import { useStationStoreWithOut } from "@/stores/modules/station";
 import dayjs from "dayjs";
-export const exportXlsx = (tableData: any) => {
+export const exportXlsx = (tableData: any, csvInfo: any) => {
     // console.log("tableData", tableData);
 
     const head: any = {
@@ -46,7 +46,7 @@ export const exportXlsx = (tableData: any) => {
     // 将工作表放入工作簿中
     XLSX.utils.book_append_sheet(wb, data, "data");
     // 生成文件并下载
-    XLSX.writeFile(wb, time + "测量数据.xlsx");
+    XLSX.writeFile(wb, csvInfo + "_测量数据.xlsx");
 };
 
 export const processItems = (items: any[]) => {

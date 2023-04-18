@@ -31,20 +31,23 @@ import type { Column } from "element-plus";
 import { parseTime, exportXlsx, processItems, processStatics } from "./fun";
 import { useStationStoreWithOut } from "@/stores/modules/station";
 import { loadStationStore } from "@/utils/storage";
-import { TableColumn, tableData } from "./table";
-
+import { TableColumn } from "./table";
+const tableData = ref([]);
+const MetroStore = useStationStoreWithOut();
+// const csvInfo=ref('');
 const search = (searchForm: any): void => {
     // console.log(header);
     const MetroName = loadStationStore("MetroName");
     searchForm.metro_name = MetroName;
+
     console.log("anchor异常统计:", searchForm);
+    MetroStore.setAbnormSearchForm(searchForm);
     const data = searchAbnormS1(searchForm);
     data.then((value) => {
-        const OptionsList = processItems(value.data.items);
-        BarOptions.value.xAxis = OptionsList[0];
-        BarOptions.value.series = OptionsList[1];
-        // tableData.value=tableData
-        // console.log(BarOptions.value.series);
+        tableData.value = value.data.table;
+        console.log(tableData.value);
+        BarOptions.value.xAxis = [{ data: value.data.dict.anchorname }];
+        BarOptions.value.series = processItems(value.data.dict.abnorm);
     });
     search2(searchForm);
 };
@@ -58,15 +61,18 @@ const search2 = (searchForm: any): void => {
         const OptionsList = processStatics(value.data.items);
         LineBarOptions.value.xAxis = OptionsList[0];
         LineBarOptions.value.series = OptionsList[1];
-        console.log(LineBarOptions.value.series);
+        // console.log(LineBarOptions.value.series);
     });
 };
 
 const exportExcel = (): void => {
     console.log("导出EXCEl中...");
+    const MetroName = loadStationStore("MetroName");
+    const csvInfo = MetroName + "_" + options.timestamp[0] + "_" + options.timestamp[1];
+    console.log(csvInfo);
 
     if (tableData.value) {
-        exportXlsx(tableData.value);
+        exportXlsx(tableData.value, csvInfo);
     }
 
     // console.log(MetroStore.MetroName);

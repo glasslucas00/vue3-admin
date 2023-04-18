@@ -5,7 +5,7 @@ const meas: AppRouteType[] = [
         path: "/meas",
         name: "Meas",
         component: () => import("@/layouts/index.vue"),
-        redirect: "/meas/table",
+        redirect: "/meas/filter",
         meta: {
             icon: "svg-dashboard",
             title: "测量数据",
@@ -20,8 +20,8 @@ const meas: AppRouteType[] = [
                     title: "测量数据表格",
                     sort: 0,
                     icon: "",
-                    keepAlive: true
-                    // hidden: true
+                    keepAlive: true,
+                    hidden: true
                 }
             },
             {

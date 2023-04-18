@@ -110,11 +110,13 @@ const paginationChange = () => {
 
 const exportExcel = (): void => {
     console.log("导出EXCEl中...");
+    const MetroName = loadStationStore("MetroName");
+    const csvInfo = MetroName + "_" + options.timestamp[0] + "_" + options.timestamp[1];
+    console.log(csvInfo);
 
     if (tableData.value) {
-        exportXlsx(tableData.value);
+        exportXlsx(tableData.value, csvInfo);
     }
-
     // console.log(MetroStore.MetroName);
 };
 const options = reactive(loadStationStore("AbnormSearchForm"));

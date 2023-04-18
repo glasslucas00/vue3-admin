@@ -5,60 +5,21 @@ import { abnormType, colorType, TableColumn } from "./table";
 import dayjs from "dayjs";
 const colors = ["#5470C6", "#EE6666", "#EE6666"];
 
-export const exportXlsx = (tableData: any) => {
-    // console.log("tableData", tableData);
-    const head: any = {
-        id: "序号",
-        timestamp: "日期",
-        direction: "方向",
-        id_station_next: "下一站",
-        anchor_name: "定位点编号 ",
-        anchor_distance_m: "距离杆位置(m)",
-        velocity_km_per_h: "车速(km/h) ",
-        distance_from_last_station_m: " 距离上一站距离(m)",
-        abrasion: "磨耗(mm)",
-        height: "导高(mm) ",
-        stagger: "拉出值(mm)",
-        temperature_max: "温度",
-        abrasion_other: "导线残高(mm)",
-        voltage: "双线距离(mm)"
-    };
-
-    const list = tableData.map((item: any) => {
-        const obj: any = {};
-        for (const k in head) {
-            if (item[k]) {
-                obj[head[k]] = item[k];
-            }
-        }
-        // for (const k in item) {
-        //     if (head[k]) {
-        //         obj[head[k]] = item[k];
-        //     }
-        // }
-        return obj;
-    });
+export const exportXlsx = (tableData: any, csvinfo: any) => {
     const time = useStationStoreWithOut().MeasSearchForm.timestamp;
-    // console.log(time);
-
+    console.log(csvinfo);
     const now = dayjs().format("YYYY-MM-DD_HH:mm:ss").toString();
-    const data = XLSX.utils.json_to_sheet(list);
+    const data = XLSX.utils.json_to_sheet(tableData);
     // 创建工作簿
     const wb = XLSX.utils.book_new();
     // 将工作表放入工作簿中
     XLSX.utils.book_append_sheet(wb, data, "data");
     // 生成文件并下载
-    XLSX.writeFile(wb, time + "测量数据.xlsx");
+    XLSX.writeFile(wb, csvinfo + "_杆号异常统计数据.xlsx");
 };
 
-export const processItems = (items: any) => {
-    const xAxisData = [{ data: items.anchors }];
-    const Data = items.data;
+export const processItems = (Data: any) => {
     const SeriesData = [];
-    delete Data[20];
-    delete Data[21];
-    delete Data[41];
-
     for (const key in Data) {
         SeriesData.push({
             name: abnormType[key],
@@ -74,9 +35,8 @@ export const processItems = (items: any) => {
 
         // SeriesData.push({name:abnormType[key],data:Data[key]})
     }
-    console.log([xAxisData, SeriesData]);
 
-    return [xAxisData, SeriesData];
+    return SeriesData;
 };
 export const processStatics = (items: any) => {
     console.log(items);

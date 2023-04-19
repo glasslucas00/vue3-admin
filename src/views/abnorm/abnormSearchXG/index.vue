@@ -69,19 +69,19 @@ const TableColumn: any[] = [
         fieldDesc: "异常类型"
         // formType: "tag"
     },
-    {
-        fieldName: "velocity_km_per_h",
-        fieldDesc: "速度(km/h)"
-    },
+    // {
+    //     fieldName: "velocity_km_per_h",
+    //     fieldDesc: "速度(km/h)"
+    // },
     {
         fieldName: "distance_from_last_station_m",
         fieldDesc: "距离上一站距离(m)"
     },
-    {
-        fieldName: "level",
-        fieldDesc: "告警等级"
-        // formType: "tag"
-    },
+    // {
+    //     fieldName: "level",
+    //     fieldDesc: "告警等级"
+    //     // formType: "tag"
+    // },
     {
         fieldName: "anchor_name",
         fieldDesc: "定位点编号"
@@ -90,10 +90,10 @@ const TableColumn: any[] = [
         fieldName: "anchor_distance_m",
         fieldDesc: "定位点距离"
     },
-    {
-        fieldName: "value",
-        fieldDesc: "数值"
-    },
+    // {
+    //     fieldName: "value",
+    //     fieldDesc: "数值"
+    // },
     {
         fieldName: "file_img",
         fieldDesc: "图片",

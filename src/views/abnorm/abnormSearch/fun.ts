@@ -47,22 +47,24 @@ export const exportXlsx = (tableData: any, csvInfo: any) => {
     // 将工作表放入工作簿中
     XLSX.utils.book_append_sheet(wb, data, "data");
     // 生成文件并下载
-    XLSX.writeFile(wb, csvInfo + "_测量数据.xlsx");
+    XLSX.writeFile(wb, csvInfo + "_异常数据.xlsx");
 };
 
 export const processItems = (items: any[]) => {
+    const imgList: any = [];
     items.map((x) => {
         x.timestamp = parseTime(x.timestamp);
         x.id_station_next = useStationStoreWithOut().StationList[x.id_station_next - 1].label;
         x.direction = x.direction > 0 ? "上行" : x.direction < 0 ? "下行" : "未知";
         // x.file_img = "https://127.0.0.1/"+ x.file_img;
-        x.file_img = "https://i.328888.xyz/2023/02/28/eu4MP.jpeg";
-        x.file_video = "https://media.vued.vanthink.cn/sparkle_your_name_am360p.mp4";
-
+        // x.file_video="https://127.0.0.1/"+ x.file_img;
+        // x.file_img = "https://i.328888.xyz/2023/02/28/eu4MP.jpeg";
+        // x.file_video = "https://media.vued.vanthink.cn/sparkle_your_name_am360p.mp4";
+        imgList.push(x.file_img);
         x.type = abnormType[x.type];
         return null;
     });
-    return items;
+    return [items, imgList];
 };
 // Parse the time to string
 export const parseTime = (time?: object | string | number | null, cFormat?: string): string | any => {

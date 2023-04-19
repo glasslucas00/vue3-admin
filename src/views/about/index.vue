@@ -6,7 +6,7 @@
             </div>
         </base-box> -->
 
-        <base-box title="杭州10号线弓网监测地面软件">
+        <base-box title="杭州4号线弓网监测地面软件">
             <el-descriptions :column="3" border>
                 <el-descriptions-item label="系统名称">{{ pkg.name }}</el-descriptions-item>
                 <el-descriptions-item label="版本"

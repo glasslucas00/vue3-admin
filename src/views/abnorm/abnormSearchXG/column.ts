@@ -33,12 +33,12 @@ export const TableColumn: Column<any>[] = [
         title: "最近定位点距离",
         width: columnsWidth
     },
-    {
-        key: "velocity_km_per_h",
-        dataKey: "velocity_km_per_h",
-        title: "速度(km/h)",
-        width: columnsWidth
-    },
+    // {
+    //     key: "velocity_km_per_h",
+    //     dataKey: "velocity_km_per_h",
+    //     title: "速度(km/h)",
+    //     width: columnsWidth
+    // },
     {
         key: "distance_from_last_station_m",
         dataKey: "distance_from_last_station_m",

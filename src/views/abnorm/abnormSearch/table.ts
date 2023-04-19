@@ -81,20 +81,7 @@ export const TableColumn: Column[] = [
     //     ]
     // }
 ];
-export const tableData: any = ref([
-    // {
-    //     id: "12",
-    //     direction: "上行",
-    //     file_img: "https://i.328888.xyz/2023/02/28/eu4MP.jpeg",
-    //     sss:'dd'
-    // },
-    {
-        id: "124",
-        direction: "成功,Nice",
-        file_img: "https://i.328888.xyz/2023/02/28/euUmt.jpeg",
-        file_video: "https://media.vued.vanthink.cn/sparkle_your_name_am360p.mp4"
-    }
-]);
+export const tableData: any = ref([]);
 
 export const abnormType: any = {
     1: "导高异常",

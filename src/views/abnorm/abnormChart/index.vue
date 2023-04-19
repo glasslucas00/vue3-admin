@@ -31,7 +31,10 @@ import type { Column } from "element-plus";
 import { parseTime, exportXlsx, processItems, processStatics } from "./fun";
 import { useStationStoreWithOut } from "@/stores/modules/station";
 import { loadStationStore } from "@/utils/storage";
-import { TableColumn } from "./table";
+// import { useMessage } from "@/hooks";
+import { messageSuccess, messageError, messageInfo, messageWarning, messageBox } from "@/utils/message";
+
+// const { success, warning, error, info } = useMessage();
 const tableData = ref([]);
 const MetroStore = useStationStoreWithOut();
 // const csvInfo=ref('');
@@ -66,13 +69,13 @@ const search2 = (searchForm: any): void => {
 };
 
 const exportExcel = (): void => {
-    console.log("导出EXCEl中...");
-    const MetroName = loadStationStore("MetroName");
-    const csvInfo = MetroName + "_" + options.timestamp[0] + "_" + options.timestamp[1];
-    console.log(csvInfo);
-
-    if (tableData.value) {
+    if (tableData.value.length) {
+        console.log("导出EXCEl中...");
+        const MetroName = loadStationStore("MetroName");
+        const csvInfo = MetroName + "_" + options.timestamp[0] + "_" + options.timestamp[1];
         exportXlsx(tableData.value, csvInfo);
+    } else {
+        messageError("请先查询数据");
     }
 
     // console.log(MetroStore.MetroName);

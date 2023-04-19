@@ -27,6 +27,7 @@ import type { Column } from "element-plus";
 import { parseTime, exportXlsx, processItems } from "./fun";
 import { useStationStoreWithOut } from "@/stores/modules/station";
 import { loadStationStore } from "@/utils/storage";
+import { messageSuccess, messageError, messageInfo, messageWarning, messageBox } from "@/utils/message";
 const loading = ref(false);
 const full = ref(false);
 // console.log(MetroStore.StationList);
@@ -69,11 +70,14 @@ const startCustomLoading = (val: number) => {
     }, 2000);
 };
 const exportExcel = (): void => {
-    console.log("导出EXCEl中...");
-    const MetroName = loadStationStore("MetroName");
-    const csvInfo = MetroName + "_" + options.timestamp;
-    if (Data.value) {
+    if (Data.value.length) {
+        console.log("导出EXCEl中...");
+        const MetroName = loadStationStore("MetroName");
+        const csvInfo = MetroName + "_" + options.timestamp;
+
         exportXlsx(Data.value, csvInfo);
+    } else {
+        messageError("请先查询数据");
     }
 
     // console.log(MetroStore.MetroName);

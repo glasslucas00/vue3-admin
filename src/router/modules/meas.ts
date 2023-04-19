@@ -13,6 +13,29 @@ const meas: AppRouteType[] = [
         },
         children: [
             {
+                path: "filter",
+                name: "Filter",
+                component: () => import("@/views/meas/MeasFilter/index.vue"),
+                meta: {
+                    title: "测量数据查询",
+                    sort: 0,
+                    icon: "",
+                    keepAlive: true
+                }
+            },
+            {
+                path: "chart",
+                name: "Chart",
+                component: () => import("@/views/meas/MeasChart/index.vue"),
+                meta: {
+                    title: "测量数据图表",
+                    sort: 1,
+                    icon: "",
+                    keepAlive: true
+                }
+            },
+
+            {
                 path: "table",
                 name: "Table",
                 component: () => import("@/views/meas/MeasSearch/index.vue"),
@@ -22,28 +45,6 @@ const meas: AppRouteType[] = [
                     icon: "",
                     keepAlive: true,
                     hidden: true
-                }
-            },
-            {
-                path: "chart",
-                name: "Chart",
-                component: () => import("@/views/meas/MeasChart/index.vue"),
-                meta: {
-                    title: "测量数据图表",
-                    sort: 2,
-                    icon: "",
-                    keepAlive: true
-                }
-            },
-            {
-                path: "filter",
-                name: "Filter",
-                component: () => import("@/views/meas/MeasFilter/index.vue"),
-                meta: {
-                    title: "测量数据查询",
-                    sort: 1,
-                    icon: "",
-                    keepAlive: true
                 }
             }
         ]

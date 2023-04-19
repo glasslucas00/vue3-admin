@@ -50,15 +50,16 @@ import { parseTime, exportXlsx, processItems } from "./fun";
 import { useStationStoreWithOut } from "@/stores/modules/station";
 import { loadStationStore } from "@/utils/storage";
 import { TableColumn, tableData } from "./table";
+import { messageSuccess, messageError, messageInfo, messageWarning, messageBox } from "@/utils/message";
 const table3Config = reactive({
     columns: TableColumn
 });
 
-const imgList = [
+const imgList = ref([
     "https://i.328888.xyz/2023/02/28/eu4MP.jpeg",
     "https://i.328888.xyz/2023/02/28/euUmt.jpeg",
     "https://i.328888.xyz/2023/02/28/euDtX.jpeg"
-];
+]);
 // console.log(MetroStore.StationList);
 const baseDialogRef = ref();
 const MetroStore = useStationStoreWithOut();
@@ -81,10 +82,9 @@ const search = (searchForm: any): void => {
     data.then((value) => {
         // Data.value =
         datatotal.value = value.data.total;
-        const items = processItems(value.data.items);
-        tableData.value = items;
-        // tableData.value=tableData
-        console.log(tableData.value);
+        const N = processItems(value.data.items);
+        tableData.value = N[0];
+        imgList.value = N[1];
 
         // console.log(value.data);
         // MetroStore.MetroName=selectvalue.value;
@@ -109,14 +109,15 @@ const paginationChange = () => {
 };
 
 const exportExcel = (): void => {
-    console.log("导出EXCEl中...");
-    const MetroName = loadStationStore("MetroName");
-    const csvInfo = MetroName + "_" + options.timestamp[0] + "_" + options.timestamp[1];
-    console.log(csvInfo);
-
-    if (tableData.value) {
+    if (tableData.value.length) {
+        console.log("导出EXCEl中...");
+        const MetroName = loadStationStore("MetroName");
+        const csvInfo = MetroName + "_" + options.timestamp[0] + "_" + options.timestamp[1];
         exportXlsx(tableData.value, csvInfo);
+    } else {
+        messageError("请先查询数据");
     }
+
     // console.log(MetroStore.MetroName);
 };
 const options = reactive(loadStationStore("AbnormSearchForm"));

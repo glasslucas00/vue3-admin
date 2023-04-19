@@ -43,6 +43,10 @@ const search = (searchForm: any): void => {
     Data.value = [];
     loading.value = true;
     const MetroName = loadStationStore("MetroName");
+    if (!MetroName) {
+        messageError("请先选择车次");
+        loading.value = false;
+    }
     searchForm.metro_name = MetroName;
     console.log("查询条件：", searchForm);
     MetroStore.setMeasSearchForm(searchForm);

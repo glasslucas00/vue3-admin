@@ -50,7 +50,7 @@ import { parseTime, exportXlsx, processItems } from "./fun";
 import { useStationStoreWithOut } from "@/stores/modules/station";
 import { loadStationStore } from "@/utils/storage";
 import { tableData } from "./table";
-
+import { messageSuccess, messageError, messageInfo, messageWarning, messageBox } from "@/utils/message";
 const TableColumn: any[] = [
     {
         fieldName: "timestamp",
@@ -143,6 +143,9 @@ const videosrc = ref("https://2media.vued.vanthink.cn/sparkle_your_name_am720p.m
 const search = (searchForm: any): void => {
     // console.log(header);
     const MetroName = loadStationStore("MetroName");
+    if (!MetroName) {
+        messageError("请先选择车次");
+    }
     searchForm.metro_name = MetroName;
     searchForm.pageSize = pageSize.value;
     searchForm.pageIndex = pageIndex.value;

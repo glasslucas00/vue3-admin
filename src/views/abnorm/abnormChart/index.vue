@@ -41,6 +41,9 @@ const MetroStore = useStationStoreWithOut();
 const search = (searchForm: any): void => {
     // console.log(header);
     const MetroName = loadStationStore("MetroName");
+    if (!MetroName) {
+        messageError("请先选择车次");
+    }
     searchForm.metro_name = MetroName;
 
     console.log("anchor异常统计:", searchForm);

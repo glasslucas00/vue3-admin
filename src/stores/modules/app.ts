@@ -30,7 +30,7 @@ export const useAppStore = defineStore({
             collapse: false,
             sideWidth: 300,
             sideCollapsed: 60,
-            systemTitle: "杭州4号线弓网监测地面软件"
+            systemTitle: "杭州10号线弓网监测地面软件"
         },
         headerConfig: {
             pageSize: "default"

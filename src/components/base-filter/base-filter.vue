@@ -63,7 +63,7 @@ const handleReset = () => {
         if (item?.config?.clearable === false) return;
         state.baseFilterForm[item.fieldName] = "";
     });
-    handleSearch();
+    // handleSearch();
 };
 
 const handleToggle = () => {

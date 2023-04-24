@@ -64,6 +64,9 @@ const search = (searchForm: any): void => {
         // console.log('select metro:',MetroStore.MetroName);
         // console.log(options);
     });
+    setTimeout(() => {
+        loading.value = false;
+    }, 10000);
 };
 
 const startCustomLoading = (val: number) => {

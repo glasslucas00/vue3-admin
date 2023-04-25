@@ -74,7 +74,7 @@ export const setChartsSeries = (chartsDatas: any) => {
         type: "line",
         symbol: "none",
         yAxisIndex: 2,
-        color: colors[2],
+        color: colors[8],
         data: chartsDatas[2]
         // dataMap.list.map(x => {
         //   return [x.distance_from_last_station_m,x.stagger);
@@ -116,29 +116,29 @@ export const setChartsSeries = (chartsDatas: any) => {
         data: chartsDatas[5]
     };
 
+    // dataSeries[6] = {
+    //     name: "True导高",
+    //     tooltip: {
+    //         formatter: "{c1}mm"
+    //     },
+    //     type: "line",
+    //     symbol: "none",
+    //     yAxisIndex: 3,
+    //     color: colors[6],
+    //     data: chartsDatas[6]
+    // };
+    // dataSeries[7] = {
+    //     name: "True拉出值",
+    //     tooltip: {
+    //         formatter: "{c1}mm"
+    //     },
+    //     type: "line",
+    //     symbol: "none",
+    //     yAxisIndex: 2,
+    //     color: colors[8],
+    //     data: chartsDatas[7]
+    // };
     dataSeries[6] = {
-        name: "True导高",
-        tooltip: {
-            formatter: "{c1}mm"
-        },
-        type: "line",
-        symbol: "none",
-        yAxisIndex: 3,
-        color: colors[6],
-        data: chartsDatas[6]
-    };
-    dataSeries[7] = {
-        name: "True拉出值",
-        tooltip: {
-            formatter: "{c1}mm"
-        },
-        type: "line",
-        symbol: "none",
-        yAxisIndex: 2,
-        color: colors[8],
-        data: chartsDatas[7]
-    };
-    dataSeries[8] = {
         name: "杆号",
         type: "line", // 如果将 markLine 单独写在一个对象里，就必须加 type ，不然报错。
         markLine: {

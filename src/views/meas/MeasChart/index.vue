@@ -123,7 +123,7 @@ const LineOptions = {
             axisLine: {
                 show: true,
                 lineStyle: {
-                    color: colors[2]
+                    color: colors[8]
                 }
             },
             axisLabel: {

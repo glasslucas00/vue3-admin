@@ -8,7 +8,7 @@ import type { Column } from "element-plus";
 import dayjs from "dayjs";
 import { isEmpty } from "@/utils/is";
 
-const columnsWidth = 120;
+const columnsWidth = 90;
 
 export const Data = [
     {
@@ -107,10 +107,10 @@ export const FormColumn: FormColumnType[] = [
         fieldDesc: "导高",
         fieldType: FormTypeEnum.SLIDER,
         config: {
-            max: 300,
-            min: 50,
-            step: 5,
-            modelValue: [22, 150]
+            max: 4200,
+            min: 4000,
+            step: 1
+            // modelValue: [4000, 4200]
         },
         show: (params: any) => {
             console.log(params);
@@ -126,10 +126,10 @@ export const FormColumn: FormColumnType[] = [
         fieldDesc: "拉出值",
         fieldType: FormTypeEnum.SLIDER,
         config: {
-            max: 300,
-            min: 50,
-            step: 5,
-            modelValue: [22, 150]
+            max: 400,
+            min: -400,
+            step: 1
+            // modelValue: [-400, 400]
         },
         show: (params: any) => {
             console.log(params);
@@ -145,10 +145,10 @@ export const FormColumn: FormColumnType[] = [
         fieldDesc: "磨耗",
         fieldType: FormTypeEnum.SLIDER,
         config: {
-            max: 300,
-            min: 50,
-            step: 5,
-            modelValue: [22, 150]
+            max: 5,
+            min: 0,
+            step: 0.1
+            // modelValue: [0, 15]
         },
         show: (params: any) => {
             console.log(params);
@@ -164,10 +164,10 @@ export const FormColumn: FormColumnType[] = [
         fieldDesc: "温度",
         fieldType: FormTypeEnum.SLIDER,
         config: {
-            max: 300,
-            min: 50,
-            step: 5,
-            modelValue: [22, 150]
+            max: 60,
+            min: 0,
+            step: 1
+            // modelValue: [0, 60]
         },
         show: (params: any) => {
             console.log(params);
@@ -184,8 +184,7 @@ export const TableColumn: Column<any>[] = [
         key: "timestamp",
         dataKey: "timestamp",
         title: "日期",
-        width: columnsWidth
-        // cellRenderer: ({ cellData: timestamp }) => parseTime(timestamp)
+        width: 150
     },
     {
         key: "direction",
@@ -198,7 +197,7 @@ export const TableColumn: Column<any>[] = [
         key: "id_station_next",
         dataKey: "id_station_next",
         title: "下一站",
-        width: columnsWidth
+        width: columnsWidth + 10
         // cellRenderer: ({ cellData: id_station_next }) => MetroStore.StationList[id_station_next - 1].label
     },
     {

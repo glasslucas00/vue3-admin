@@ -1,56 +1,69 @@
 import { Column } from "@/components/base-table/src/types";
+const columnsWidth = 80;
 export const TableColumn: Column[] = [
     {
         fieldName: "timestamp",
-        fieldDesc: "日期"
+        fieldDesc: "日期",
+        width: 160
     },
     {
         fieldName: "direction",
-        fieldDesc: "方向"
+        fieldDesc: "方向",
+        width: columnsWidth
     },
     {
         fieldName: "id_station_next",
-        fieldDesc: "下一站"
+        fieldDesc: "下一站",
+        width: columnsWidth
     },
     {
         fieldName: "type",
-        fieldDesc: "异常类型"
+        fieldDesc: "异常类型",
+        width: columnsWidth
         // formType: "tag"
     },
     {
         fieldName: "velocity_km_per_h",
-        fieldDesc: "速度(km/h)"
+        fieldDesc: "速度(km/h)",
+        width: columnsWidth
     },
     {
         fieldName: "distance_from_last_station_m",
-        fieldDesc: "距离上一站距离(m)"
+        fieldDesc: "距离上一站距离(m)",
+        width: columnsWidth
     },
     {
         fieldName: "level",
-        fieldDesc: "告警等级"
+        fieldDesc: "告警等级",
+        width: columnsWidth
         // formType: "tag"
     },
     {
         fieldName: "anchor_name",
-        fieldDesc: "定位点编号"
+        fieldDesc: "定位点编号",
+        width: columnsWidth
     },
     {
         fieldName: "anchor_distance_m",
-        fieldDesc: "定位点距离"
+        fieldDesc: "定位点距离",
+        width: columnsWidth
     },
     {
         fieldName: "value",
-        fieldDesc: "数值"
+        fieldDesc: "数值",
+        width: columnsWidth
     },
     {
         fieldName: "file_img",
         fieldDesc: "图片",
-        formType: "slot"
+        formType: "slot",
+        width: 150
     },
     {
         fieldName: "file_video",
         fieldDesc: "视频",
-        formType: "slot"
+        formType: "slot",
+        width: columnsWidth
     }
     // {
     //     fieldName: "#",

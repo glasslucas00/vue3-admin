@@ -63,6 +63,10 @@ const search = (searchForm: any): void => {
         // MetroStore.MetroName=selectvalue.value;
         // console.log('select metro:',MetroStore.MetroName);
         // console.log(options);
+    }).catch(() => {
+        console.log("error");
+        messageError("查询失败");
+        loading.value = false;
     });
 };
 

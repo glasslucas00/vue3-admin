@@ -22,7 +22,7 @@ export const searchMeasChart = (data?: any) => request.post(Api.POST_MEAS_CHART,
 export const searchMeasFilter = (data?: any) => request.post(Api.POST_MEAS_FILTER, data, { successMessage: true });
 
 // abnorm api
-export const searchAbnormTable = (data?: any) => request.post(Api.POST_ABNORM_SEARCH, data, { successMessage: true });
+export const searchAbnormTable = (data?: any) => request.post(Api.POST_ABNORM_SEARCH, data, { errorMessage: false, successMessage: true });
 
 export const searchAbnormS1 = (data?: any) => request.post(Api.POST_ABNORM_SEARCH_S1, data, { successMessage: true });
 

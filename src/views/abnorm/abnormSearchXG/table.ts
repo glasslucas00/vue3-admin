@@ -2,6 +2,7 @@ import { Column } from "@/components/base-table/src/types";
 import { deleteAbnormXG } from "@/api/info";
 import { local } from "@/utils";
 const router = useRouter();
+const columnsWidth = 90;
 export const TableColumn: Column[] = [
     {
         fieldName: "timestamp",

@@ -43,55 +43,55 @@ export const BarOptions: any = ref({
     //     }
     // ],
     xAxis: [
-        {
-            data: ["2016", "2017", "2018", "2019"]
-        }
+        // {
+        //     data: ["2016", "2017", "2018", "2019"]
+        // }
     ],
     series: [
-        {
-            name: "导高异常",
-            type: "bar",
-            stack: "PC",
-            data: [1500, 2800, 3500, 2900],
-            barWidth: "12",
-            barGap: "20%",
-            itemStyle: {
-                color: "#5171fd"
-            }
-        },
-        {
-            name: "拉出值异常",
-            type: "bar",
-            stack: "PC",
-            data: [700, 600, 550, 420],
-            barWidth: "12",
-            barGap: "20%",
-            itemStyle: {
-                color: "#3dadf6"
-            }
-        },
-        {
-            name: "磨耗异常",
-            type: "bar",
-            stack: "mobile",
-            data: [1600, 2300, 2800, 3300],
-            barWidth: "12",
-            barGap: "20%",
-            itemStyle: {
-                color: "#ea677c"
-            }
-        },
-        {
-            name: "燃弧异常",
-            type: "bar",
-            stack: "mobile",
-            data: [1600, 2800, 3500, 2000],
-            barWidth: "12",
-            barGap: "20%",
-            itemStyle: {
-                color: "#ef9b5f"
-            }
-        }
+        // {
+        //     name: "导高异常",
+        //     type: "bar",
+        //     stack: "PC",
+        //     data: [1500, 2800, 3500, 2900],
+        //     barWidth: "12",
+        //     barGap: "20%",
+        //     itemStyle: {
+        //         color: "#5171fd"
+        //     }
+        // },
+        // {
+        //     name: "拉出值异常",
+        //     type: "bar",
+        //     stack: "PC",
+        //     data: [700, 600, 550, 420],
+        //     barWidth: "12",
+        //     barGap: "20%",
+        //     itemStyle: {
+        //         color: "#3dadf6"
+        //     }
+        // },
+        // {
+        //     name: "磨耗异常",
+        //     type: "bar",
+        //     stack: "mobile",
+        //     data: [1600, 2300, 2800, 3300],
+        //     barWidth: "12",
+        //     barGap: "20%",
+        //     itemStyle: {
+        //         color: "#ea677c"
+        //     }
+        // },
+        // {
+        //     name: "燃弧异常",
+        //     type: "bar",
+        //     stack: "mobile",
+        //     data: [1600, 2800, 3500, 2000],
+        //     barWidth: "12",
+        //     barGap: "20%",
+        //     itemStyle: {
+        //         color: "#ef9b5f"
+        //     }
+        // }
     ]
 });
 
@@ -126,7 +126,8 @@ export const LineBarOptions: any = ref({
                 alignWithLabel: true
             },
             // prettier-ignore
-            data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            // data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            data: []
         }
     ],
     yAxis: [
@@ -163,20 +164,20 @@ export const LineBarOptions: any = ref({
         }
     ],
     series: [
-        {
-            name: "燃弧次数",
-            type: "bar",
-            barWidth: "20",
-            color: colors[0],
-            data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
-        },
-        {
-            name: "燃弧率",
-            type: "line",
-            color: colors[1],
-            yAxisIndex: 1,
-            data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
-        }
+        // {
+        //     name: "燃弧次数",
+        //     type: "bar",
+        //     barWidth: "20",
+        //     color: colors[0],
+        //     data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+        // },
+        // {
+        //     name: "燃弧率",
+        //     type: "line",
+        //     color: colors[1],
+        //     yAxisIndex: 1,
+        //     data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+        // }
     ]
 });
 

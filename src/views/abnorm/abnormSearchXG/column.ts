@@ -7,7 +7,7 @@ import { useStationStoreWithOut } from "@/stores/modules/station";
 import type { Column } from "element-plus";
 import dayjs from "dayjs";
 
-const columnsWidth = 120;
+const columnsWidth = 0;
 export const TableColumn: Column<any>[] = [
     {
         key: "timestamp",

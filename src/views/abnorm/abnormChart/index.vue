@@ -54,6 +54,9 @@ const search = (searchForm: any): void => {
         console.log(tableData.value);
         BarOptions.value.xAxis = [{ data: value.data.dict.anchorname }];
         BarOptions.value.series = processItems(value.data.dict.abnorm);
+    }).catch(() => {
+        console.log("error");
+        messageError("查询失败");
     });
     search2(searchForm);
 };
@@ -68,6 +71,9 @@ const search2 = (searchForm: any): void => {
         LineBarOptions.value.xAxis = OptionsList[0];
         LineBarOptions.value.series = OptionsList[1];
         // console.log(LineBarOptions.value.series);
+    }).catch(() => {
+        console.log("error");
+        messageError("查询失败");
     });
 };
 

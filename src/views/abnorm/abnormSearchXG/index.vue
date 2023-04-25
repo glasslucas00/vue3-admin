@@ -51,22 +51,27 @@ import { useStationStoreWithOut } from "@/stores/modules/station";
 import { loadStationStore } from "@/utils/storage";
 import { tableData } from "./table";
 import { messageSuccess, messageError, messageInfo, messageWarning, messageBox } from "@/utils/message";
+const columnsWidth = 0;
 const TableColumn: any[] = [
     {
         fieldName: "timestamp",
-        fieldDesc: "日期"
+        fieldDesc: "日期",
+        width: columnsWidth
     },
     {
         fieldName: "direction",
-        fieldDesc: "方向"
+        fieldDesc: "方向",
+        width: columnsWidth
     },
     {
         fieldName: "id_station_next",
-        fieldDesc: "下一站"
+        fieldDesc: "下一站",
+        width: columnsWidth
     },
     {
         fieldName: "type",
-        fieldDesc: "异常类型"
+        fieldDesc: "异常类型",
+        width: columnsWidth
         // formType: "tag"
     },
     // {
@@ -75,7 +80,8 @@ const TableColumn: any[] = [
     // },
     {
         fieldName: "distance_from_last_station_m",
-        fieldDesc: "距离上一站距离(m)"
+        fieldDesc: "距离上一站距离(m)",
+        width: columnsWidth
     },
     // {
     //     fieldName: "level",
@@ -84,11 +90,13 @@ const TableColumn: any[] = [
     // },
     {
         fieldName: "anchor_name",
-        fieldDesc: "定位点编号"
+        fieldDesc: "定位点编号",
+        width: columnsWidth
     },
     {
         fieldName: "anchor_distance_m",
-        fieldDesc: "定位点距离"
+        fieldDesc: "定位点距离",
+        width: columnsWidth
     },
     // {
     //     fieldName: "value",
@@ -97,7 +105,8 @@ const TableColumn: any[] = [
     {
         fieldName: "file_img",
         fieldDesc: "图片",
-        formType: "slot"
+        formType: "slot",
+        width: columnsWidth
     },
     {
         fieldName: "#",
@@ -160,21 +169,15 @@ const search = (searchForm: any): void => {
 
         const items = processItems(value.data.items);
         tableData.value = items;
-        // console.log(tableData.value);
-
-        // console.log(value.data);
-        // MetroStore.MetroName=selectvalue.value;
-        // console.log('select metro:',MetroStore.MetroName);
-        // console.log(options);
+    }).catch(() => {
+        console.log("error");
+        messageError("查询失败");
     });
 };
 
 const openVideo = (index: any, row: any) => {
     videosrc.value = row.file_video;
     unref(baseDialogRef).showDialog();
-};
-const deleteItem = () => {
-    datatotal.value = datatotal.value - 1;
 };
 const paginationChange = () => {
     console.log(pagination.value);

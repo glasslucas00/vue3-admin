@@ -8,7 +8,7 @@ import type { Column } from "element-plus";
 import dayjs from "dayjs";
 import { isEmpty } from "@/utils/is";
 
-const columnsWidth = 120;
+const columnsWidth = 90;
 
 export const Data = [
     {
@@ -47,10 +47,10 @@ export const MeasTypes: BasicType[] = [
         label: "导高",
         value: "height"
     },
-    // {
-    //     label: "拉出值",
-    //     value: "stagger"
-    // },
+    {
+        label: "拉出值",
+        value: "stagger"
+    },
     {
         label: "磨耗",
         value: "abrasion"
@@ -184,8 +184,7 @@ export const TableColumn: Column<any>[] = [
         key: "timestamp",
         dataKey: "timestamp",
         title: "日期",
-        width: columnsWidth
-        // cellRenderer: ({ cellData: timestamp }) => parseTime(timestamp)
+        width: 150
     },
     {
         key: "direction",
@@ -198,7 +197,7 @@ export const TableColumn: Column<any>[] = [
         key: "id_station_next",
         dataKey: "id_station_next",
         title: "下一站",
-        width: columnsWidth
+        width: columnsWidth + 10
         // cellRenderer: ({ cellData: id_station_next }) => MetroStore.StationList[id_station_next - 1].label
     },
     {

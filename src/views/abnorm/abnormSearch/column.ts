@@ -7,13 +7,13 @@ import { useStationStoreWithOut } from "@/stores/modules/station";
 import type { Column } from "element-plus";
 import dayjs from "dayjs";
 
-const columnsWidth = 120;
+const columnsWidth = 85;
 export const TableColumn: Column<any>[] = [
     {
         key: "timestamp",
         dataKey: "timestamp",
         title: "日期",
-        width: columnsWidth
+        width: 150
     },
     {
         key: "direction",

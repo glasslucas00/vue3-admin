@@ -28,7 +28,7 @@ export const useAppStore = defineStore({
         menuConfig: {
             mode: "vertical",
             collapse: false,
-            sideWidth: 300,
+            sideWidth: 200,
             sideCollapsed: 60,
             systemTitle: "杭州4号线弓网监测地面软件"
         },

@@ -51,6 +51,7 @@ export const exportXlsx = (tableData: any) => {
 };
 
 export const processItems = (items: any[]) => {
+    const imgList: any = [];
     items.map((x) => {
         x.timestamp = parseTime(x.timestamp);
         x.id_station_next = useStationStoreWithOut().StationList[x.id_station_next - 1].label;
@@ -58,10 +59,11 @@ export const processItems = (items: any[]) => {
         x.file_img = "http://localhost:88/" + x.file_img;
         // x.file_img = "https://i.328888.xyz/2023/02/28/eu4MP.jpeg";
         // x.file_video = "https://media.vued.vanthink.cn/sparkle_your_name_am360p.mp4";
+        imgList.push(x.file_img);
         x.type = abnormType[30];
         return null;
     });
-    return items;
+    return [items, imgList];
 };
 // Parse the time to string
 export const parseTime = (time?: object | string | number | null, cFormat?: string): string | any => {

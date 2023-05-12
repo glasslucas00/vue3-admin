@@ -1,6 +1,6 @@
 <template>
     <router-link to="/" class="flex-center side-logo">
-        <base-icon svg-name="xuzhou" :size="200" color="#fff" />
+        <base-icon svg-name="metro" :size="200" color="#fff" />
 
         <!-- <div class="app-logo">
             

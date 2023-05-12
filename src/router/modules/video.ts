@@ -9,7 +9,8 @@ const abnorm: AppRouteType[] = [
         meta: {
             title: "受电弓",
             icon: "svg-nested",
-            sort: 2
+            sort: 2,
+            permission: "admin_system"
         },
         children: [
             {
@@ -19,7 +20,8 @@ const abnorm: AppRouteType[] = [
                 meta: {
                     title: "受电弓实时视频",
                     sort: 0,
-                    icon: ""
+                    icon: "",
+                    permission: "admin_system_user"
                 }
             }
         ]

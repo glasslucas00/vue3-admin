@@ -22,6 +22,7 @@
                             :src="scope.row.file_img"
                             :zoom-rate="1.2"
                             :preview-src-list="imgList"
+                            :initial-index="scope.$index"
                             preview-teleported
                             fit="cover"
                             style="width: 120px; height: 80px"

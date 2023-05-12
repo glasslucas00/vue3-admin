@@ -22,6 +22,7 @@
                             :src="scope.row.file_img"
                             :zoom-rate="1.2"
                             :preview-src-list="imgList"
+                            :initial-index="scope.$index"
                             preview-teleported
                             fit="cover"
                             style="width: 120px; height: 80px"
@@ -134,11 +135,11 @@ const table3Config: any = reactive({
     columns: TableColumn
 });
 
-const imgList = [
+const imgList = ref([
     "https://i.328888.xyz/2023/02/28/eu4MP.jpeg",
     "https://i.328888.xyz/2023/02/28/euUmt.jpeg",
     "https://i.328888.xyz/2023/02/28/euDtX.jpeg"
-];
+]);
 // console.log(MetroStore.StationList);
 const baseDialogRef = ref();
 const MetroStore = useStationStoreWithOut();
@@ -167,8 +168,9 @@ const search = (searchForm: any): void => {
         datatotal.value = value.data.total;
         console.log("datatotal.value", datatotal.value);
 
-        const items = processItems(value.data.items);
-        tableData.value = items;
+        const N = processItems(value.data.items);
+        tableData.value = N[0];
+        imgList.value = N[1];
     }).catch(() => {
         console.log("error");
         messageError("查询失败");
